@@ -4,7 +4,7 @@ one-liners
 Some trivial utilities which are too tiny to have a separate repo. Or documentation. Or comments.
 
 
-# scre
+## scre
 simple c++ resource embedder.
 
 Description:
