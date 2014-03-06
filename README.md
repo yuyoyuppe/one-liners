@@ -7,5 +7,5 @@ Some trivial utilities which are too tiny to have a separate repo. Or documentat
 ## scre
 simple c++ resource embedder.
 
-Description:
+### Description
 Generates arrays on the stack with resource content, function to get heap-allocated pointer to the resource and all the needed headers.
