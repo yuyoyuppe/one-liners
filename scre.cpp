@@ -39,8 +39,8 @@ void process_chunk(
        << std::to_string(chunk_number) << "(){static unsigned char chunk[] = {";
 
     of << std::hex << std::showbase;
-    while(bytes_to_read-- > 1) of << unsigned int(*data++) << ',';
-    of << unsigned int(*data);
+    while(bytes_to_read-- > 1) of << static_cast<unsigned int>(*data++) << ',';
+    of << static_cast<unsigned int>(*data);
     of << "}; return reinterpret_cast<unsigned char *>(chunk);}}";
 }
 
@@ -125,7 +125,7 @@ void process(
     generate_allocator_file(output_file_prefix, chunk_size, full_chunk_count, file_size, ns_name);
 }
 
-void main(const int argc, const char ** argv)
+int main(const int argc, const char ** argv)
 {
     try
     {
@@ -145,21 +145,22 @@ void main(const int argc, const char ** argv)
         if(vm.count("help"))
         {
             std::cout << desc << std::endl;
-            return;
+            return 1;
         }
 
         if(vm.count("input"))
             process(vm["input"].as<std::string>(), vm["output"].as<std::string>(), 1024 * vm["size"].as<unsigned short>());
         else
-            std::cout << "error: you must specify the input file to compress! See --help for instructions" << std::endl;;
+            std::cout << "error: you must specify an input file to embed! See --help for instructions" << std::endl;;
     }
     catch(std::exception & e)
     {
         std::cerr << "error: " << e.what() << std::endl;
-        return;
+        return 1;
     }
     catch(...)
     {
         std::cerr << "error: exception of unknown type!" << std::endl;
     }
+    return 0;
 }
