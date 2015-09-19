@@ -22,3 +22,8 @@ I don't want to remember this.
 ### Description
 Automatically calculates weekly workout schedule based on number of reps. P.S. Never use statically typed language 
 without implicit numeric type conversions for such things.
+
+## cpp-style
+
+###
+Stop wasting time remembering established programming truisms
