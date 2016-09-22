@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2016-02-10 00:40:51" build="160207">
+		<key name=".Vanilla" modified="2016-07-28 17:21:23" build="160724">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -53,13 +53,13 @@
 			<value name="Update.CheckOnStartup" type="hex" data="01"/>
 			<value name="Update.CheckHourly" type="hex" data="00"/>
 			<value name="Update.ConfirmDownload" type="hex" data="01"/>
-			<value name="Update.UseBuilds" type="hex" data="02"/>
+			<value name="Update.UseBuilds" type="hex" data="01"/>
 			<value name="FontUseDpi" type="hex" data="01"/>
 			<value name="FontUseUnits" type="hex" data="01"/>
 			<value name="FontSize" type="ulong" data="14"/>
 			<value name="StatusFontHeight" type="long" data="11"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2016-02-03 22:15:45" build="160202">
+			<key name="HotKeys" modified="2016-07-28 00:56:18" build="160724">
 				<value name="MinimizeRestore" type="dword" data="000011c0"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="00000011"/>
@@ -72,9 +72,9 @@
 				<value name="SetFocusGui" type="dword" data="00000000"/>
 				<value name="SetFocusChild" type="dword" data="00000000"/>
 				<value name="ChildSystemMenu" type="dword" data="00000000"/>
-				<value name="Multi.NewConsole" type="dword" data="00001154"/>
+				<value name="Multi.NewConsole" type="dword" data="00000000"/>
 				<value name="Multi.NewConsoleShift" type="dword" data="00105b57"/>
-				<value name="Multi.CmdKey" type="dword" data="00005b58"/>
+				<value name="Multi.CmdKey" type="dword" data="00001154"/>
 				<value name="Multi.NewWindow" type="dword" data="00000000"/>
 				<value name="Multi.NewConsolePopup" type="dword" data="00005b4e"/>
 				<value name="Multi.NewConsolePopup2" type="dword" data="00000000"/>
@@ -240,13 +240,22 @@
 				<value name="DndLKey" type="hex" data="00"/>
 				<value name="DndRKey" type="hex" data="a2"/>
 				<value name="WndDragKey" type="dword" data="00121101"/>
+				<value name="Key.JumpActiveMonitor" type="dword" data="00000000"/>
+				<value name="Key.AltNumpad" type="dword" data="00000000"/>
+				<value name="Key.ResetTerm" type="dword" data="00000000"/>
 			</key>
 			<value name="CmdLineHistory" type="multi">
+				<line data="{FrozenDroplet}"/>
 				<line data="{Shells::cmd (Admin)}"/>
+				<line data="{VSx64}"/>
 				<line data="{VSx86}"/>
 				<line data="cmd /k D:"/>
+				<line data="{showbranch}"/>
+				<line data="{Shells::cmd}"/>
+				<line data="{Shells::cmd 64/32}"/>
+				<line data="{Shells::cmd-32}"/>
+				<line data="{Shells::PowerShell}"/>
 				<line data="{2x2}"/>
-				<line data="{VSx64}"/>
 				<line data="cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot;"/>
 			</value>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
@@ -340,7 +349,7 @@
 			<value name="WindowMode" type="dword" data="00000521"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="ConWnd X" type="long" data="-3"/>
-			<value name="ConWnd Y" type="long" data="-3"/>
+			<value name="ConWnd Y" type="long" data="-2"/>
 			<value name="LastMonitor" type="string" data="0,0,1680,1050"/>
 			<value name="ConWnd Width" type="dword" data="0000009d"/>
 			<value name="ConWnd Height" type="dword" data="00000036"/>
@@ -362,7 +371,7 @@
 			<value name="DefaultBufferHeight" type="long" data="32766"/>
 			<value name="AutoBufferHeight" type="hex" data="01"/>
 			<value name="UseScrollLock" type="hex" data="01"/>
-			<value name="CmdOutputCP" type="long" data="0"/>
+			<value name="CmdOutputCP" type="long" data="2"/>
 			<value name="ComSpec.Type" type="hex" data="00"/>
 			<value name="ComSpec.Bits" type="hex" data="00"/>
 			<value name="ComSpec.UpdateEnv" type="hex" data="00"/>
@@ -373,6 +382,7 @@
 			<value name="EnvironmentSet" type="multi">
 				<line data="set PATH=%ConEmuBaseDir%\Scripts;%PATH%"/>
 				<line data="chcp utf8"/>
+				<line data=" "/>
 			</value>
 			<value name="CTS.Intelligent" type="hex" data="01"/>
 			<value name="CTS.IntelligentExceptions" type="string" data="far|vim"/>
@@ -392,7 +402,7 @@
 			<value name="ClipboardConfirmEnter" type="hex" data="01"/>
 			<value name="ClipboardConfirmLonger" type="ulong" data="200"/>
 			<value name="FarGotoEditorOpt" type="hex" data="01"/>
-			<value name="FarGotoEditorPath" type="string" data="far.exe /e%1:%2 &quot;%3&quot;"/>
+			<value name="FarGotoEditorPath" type="string" data="cmd /k &quot;start %3&quot;"/>
 			<value name="HighlightMouseRow" type="hex" data="00"/>
 			<value name="HighlightMouseCol" type="hex" data="00"/>
 			<value name="FixFarBorders" type="hex" data="01"/>
@@ -529,7 +539,7 @@
 			<value name="RetardInactivePanes" type="hex" data="00"/>
 			<value name="MinimizeOnLoseFocus" type="hex" data="00"/>
 			<value name="DisableFarFlashing" type="hex" data="00"/>
-			<value name="DisableAllFlashing" type="hex" data="00"/>
+			<value name="DisableAllFlashing" type="hex" data="01"/>
 			<value name="FindText" type="string" data="srv"/>
 			<value name="FindMatchCase" type="hex" data="00"/>
 			<value name="FindMatchWholeWords" type="hex" data="00"/>
@@ -575,18 +585,19 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="Tasks" modified="2016-02-03 22:15:45" build="160202">
-				<value name="Count" type="long" data="13"/>
-				<key name="Task1" modified="2016-02-03 22:15:45" build="160202">
+			<key name="Tasks" modified="2016-07-28 00:56:18" build="160724">
+				<value name="Count" type="long" data="14"/>
+				<key name="Task1" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000002"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot;"/>
+					<value name="Cmd1" type="string" data="cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot; &amp;&amp; gitshowbranch /I"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
+					<value name="Cmd2" type="string" data="cmd.exe /k &quot;gitshowbranch /I&quot; -cur_console "/>
 				</key>
-				<key name="Task2" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task2" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -595,7 +606,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task3" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task3" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::cmd-32}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -604,7 +615,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task4" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task4" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::cmd 64/32}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -614,7 +625,7 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="2"/>
 				</key>
-				<key name="Task5" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task5" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::PowerShell}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -623,7 +634,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task6" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task6" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Shells::PowerShell (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -632,7 +643,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task7" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task7" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Bash::bash}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -641,7 +652,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task8" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task8" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Bash::Git bash}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -650,7 +661,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task9" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task9" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Tests::Show ANSI colors}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -659,7 +670,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task10" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task10" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{Scripts::Chocolatey (Admin)}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -668,7 +679,7 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task11" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task11" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{VSx86}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
@@ -678,16 +689,16 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd2" type="string" data="cmd prompt $E]2;&quot;$P&quot;$E\$P$G &amp; cd /d D:\"/>
 				</key>
-				<key name="Task12" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task12" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{VSx64}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data="%comspec% /k &quot;&quot;E:\software\VS2015\VC\vcvarsall.bat&quot;&quot; amd64_x86"/>
+					<value name="Cmd1" type="string" data="%comspec% /k &quot;&quot;E:\software\VS2015\VC\vcvarsall.bat&quot;&quot; amd64"/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task13" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Task13" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="{2x2}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00101154"/>
@@ -699,13 +710,32 @@
 					<value name="Active" type="long" data="1"/>
 					<value name="Count" type="long" data="4"/>
 				</key>
+				<key name="Task14" modified="2016-07-28 00:56:18" build="160724">
+					<value name="Name" type="string" data="{FrozenDroplet}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Cmd1" type="string" data="cmd.exe /k &quot;ssh acmd@192.168.10.104 -p 54321&quot;"/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+				</key>
+				<key name="Task15" modified="2016-07-26 16:53:17" build="160724">
+					<value name="Name" type="string" data="{showbranch}"/>
+					<value name="Flags" type="dword" data="00000005"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Cmd1" type="string" data="cmd.exe"/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd2" type="string" data="&gt; -cur_console:d:C:\Users\acmd cmd.exe /k &quot;%ConEmuBaseDir%\CmdInit.cmd&quot; &amp;&amp; echo SOOQA"/>
+				</key>
 			</key>
-			<key name="Apps" modified="2016-02-03 22:15:45" build="160202">
+			<key name="Apps" modified="2016-07-28 00:56:18" build="160724">
 				<value name="Count" type="long" data="0"/>
 			</key>
-			<key name="Colors" modified="2016-02-03 22:15:45" build="160202">
-				<value name="Count" type="long" data="2"/>
-				<key name="Palette1" modified="2016-02-03 22:15:45" build="160202">
+			<key name="Colors" modified="2016-07-28 00:56:18" build="160724">
+				<value name="Count" type="long" data="3"/>
+				<key name="Palette1" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="#Attached:cmd"/>
 					<value name="ExtendColors" type="hex" data="00"/>
 					<value name="ExtendColorIdx" type="hex" data="0e"/>
@@ -746,7 +776,48 @@
 					<value name="ColorTable30" type="dword" data="000089b5"/>
 					<value name="ColorTable31" type="dword" data="00e3f6fd"/>
 				</key>
-				<key name="Palette2" modified="2016-02-03 22:15:45" build="160202">
+				<key name="Palette2" modified="2016-07-28 00:56:18" build="160724">
+					<value name="Name" type="string" data="#Attached:cmd:01"/>
+					<value name="ExtendColors" type="hex" data="00"/>
+					<value name="ExtendColorIdx" type="hex" data="0e"/>
+					<value name="TextColorIdx" type="hex" data="07"/>
+					<value name="BackColorIdx" type="hex" data="00"/>
+					<value name="PopTextColorIdx" type="hex" data="05"/>
+					<value name="PopBackColorIdx" type="hex" data="0f"/>
+					<value name="ColorTable00" type="dword" data="00000000"/>
+					<value name="ColorTable01" type="dword" data="00800000"/>
+					<value name="ColorTable02" type="dword" data="00008000"/>
+					<value name="ColorTable03" type="dword" data="00808000"/>
+					<value name="ColorTable04" type="dword" data="00000080"/>
+					<value name="ColorTable05" type="dword" data="00800080"/>
+					<value name="ColorTable06" type="dword" data="00008080"/>
+					<value name="ColorTable07" type="dword" data="00c0c0c0"/>
+					<value name="ColorTable08" type="dword" data="00808080"/>
+					<value name="ColorTable09" type="dword" data="00ff0000"/>
+					<value name="ColorTable10" type="dword" data="0000ff00"/>
+					<value name="ColorTable11" type="dword" data="00ffff00"/>
+					<value name="ColorTable12" type="dword" data="000000ff"/>
+					<value name="ColorTable13" type="dword" data="00ff00ff"/>
+					<value name="ColorTable14" type="dword" data="0000ffff"/>
+					<value name="ColorTable15" type="dword" data="00ffffff"/>
+					<value name="ColorTable16" type="dword" data="00000000"/>
+					<value name="ColorTable17" type="dword" data="00800000"/>
+					<value name="ColorTable18" type="dword" data="00008000"/>
+					<value name="ColorTable19" type="dword" data="00808000"/>
+					<value name="ColorTable20" type="dword" data="00000080"/>
+					<value name="ColorTable21" type="dword" data="00800080"/>
+					<value name="ColorTable22" type="dword" data="00008080"/>
+					<value name="ColorTable23" type="dword" data="00c0c0c0"/>
+					<value name="ColorTable24" type="dword" data="00808080"/>
+					<value name="ColorTable25" type="dword" data="00ff0000"/>
+					<value name="ColorTable26" type="dword" data="0000ff00"/>
+					<value name="ColorTable27" type="dword" data="00ffff00"/>
+					<value name="ColorTable28" type="dword" data="000000ff"/>
+					<value name="ColorTable29" type="dword" data="00ff00ff"/>
+					<value name="ColorTable30" type="dword" data="0000ffff"/>
+					<value name="ColorTable31" type="dword" data="00ffffff"/>
+				</key>
+				<key name="Palette3" modified="2016-07-28 00:56:18" build="160724">
 					<value name="Name" type="string" data="#Attached:cpp_console_dummy"/>
 					<value name="ExtendColors" type="hex" data="00"/>
 					<value name="ExtendColorIdx" type="hex" data="0e"/>
@@ -788,6 +859,20 @@
 					<value name="ColorTable31" type="dword" data="00e3f6fd"/>
 				</key>
 			</key>
+			<value name="VividColors" type="hex" data="01"/>
+			<value name="AnsiExecution" type="hex" data="01"/>
+			<value name="AnsiAllowedCommands" type="multi">
+				<line data="cmd -cur_console:R /cGitShowBranch.cmd"/>
+			</value>
+			<value name="JumpListAutoUpdate" type="hex" data="01"/>
+			<value name="CTS.ResetOnRelease" type="hex" data="00"/>
+			<value name="CTS.EraseBeforeReset" type="hex" data="01"/>
+			<value name="UseAltGrayPlus" type="hex" data="01"/>
+			<value name="MouseDragWindow" type="hex" data="01"/>
+			<value name="DebugLog" type="hex" data="00"/>
+			<value name="StatusBar.Hide.TMode" type="hex" data="01"/>
+			<value name="StatusBar.Hide.RMode" type="hex" data="01"/>
+			<value name="CompressLongStrings" type="hex" data="01"/>
 		</key>
 	</key>
 </key>
