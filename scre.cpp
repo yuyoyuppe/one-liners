@@ -31,7 +31,7 @@ void process_chunk(
 {
     const std::string chunk_outname(chunk_number_to_filename(chunk_number, output_file_prefix));
     if(boost::filesystem::exists(chunk_outname))
-        throw(std::logic_error(chunk_outname + std::string(" is already exist")));
+        throw(std::logic_error(chunk_outname + std::string(" already exists")));
 
     std::ofstream of(chunk_outname);
 
@@ -53,7 +53,7 @@ void generate_allocator_file(
 {
     const std::string allocator_fname(output_file_prefix + "_allocator.cpp");
     if(boost::filesystem::exists(allocator_fname))
-        throw(std::logic_error(allocator_fname + std::string(" is already exist")));
+        throw(std::logic_error(allocator_fname + std::string(" already exists")));
 
     std::ofstream allocator_file(allocator_fname);
 
