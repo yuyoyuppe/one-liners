@@ -1,11 +1,11 @@
 #include <algorithm>
-#define NOMINMAX
 #include <windows.h>
 #include <iostream>
 #include <cstring>
 #include <unordered_map>
 #include <algorithm>
 #include <sstream>
+#include <cinttypes>
 
 #include "progress_display.h"
 
@@ -21,7 +21,7 @@ size_t progress_display::add_progress_bar(std::string description, const size_t 
   return _next_token_id++;
 }
 
-void progress_display::clear_to_right(const size_t x_pos, const size_t count)
+void progress_display::clear_to_right(const size_t count)
 {
   std::string clear_line(count, ' ');
   std::cout << clear_line;
@@ -36,7 +36,7 @@ void progress_display::remove_progress_bar(
 
   const size_t removed_vertical_offset = it->second._vertical_offset;
   set_cursor_to_progress_bar_offset(_progress_bars.size());
-  clear_to_right(0, _max_symbols_printed_on_draw);
+  clear_to_right(_max_symbols_printed_on_draw);
   _progress_bars.erase(it);
 
   for(auto & kv : _progress_bars)
@@ -45,15 +45,22 @@ void progress_display::remove_progress_bar(
   draw();
 }
 
-void progress_display::update_progress_bar(const size_t progress_bar_id, const size_t new_value)
+void progress_display::tick_progress_bar_total(const size_t progress_bar_id)
 {
-  auto it = _progress_bars.find(progress_bar_id);
-  if(it == cend(_progress_bars))
-    return;
-  if(_remove_completed && new_value >= it->second._max_value)
-    remove_progress_bar(progress_bar_id);
-  else
-    it->second._current_value = std::min(new_value, it->second._max_value);
+    auto it = _progress_bars.find(progress_bar_id);
+    if (it == cend(_progress_bars))
+        return;
+    ++it->second._max_value;
+}
+
+void progress_display::tick_progress_bar_current(const size_t progress_bar_id)
+{
+    auto it = _progress_bars.find(progress_bar_id);
+    if (it == cend(_progress_bars))
+        return;
+    ++it->second._current_value;
+    if (_remove_completed && it->second._current_value >= it->second._max_value)
+        remove_progress_bar(progress_bar_id);
 }
 
 progress_display::progress_display()
@@ -88,7 +95,7 @@ void progress_display::draw()
   for(auto & kv : _progress_bars)
   {
     progress_bar & bar   = kv.second;
-    const float    ratio = static_cast<float>(bar._current_value) / bar._max_value;
+    const float    ratio = bar._max_value? static_cast<float>(bar._current_value) / bar._max_value : 0.f;
     const size_t   progress_bar_size =
       static_cast<size_t>(static_cast<float>(_term_dimensions.x - mdr) * _progress_bar_size);
     const size_t ncompleted_bars     = static_cast<size_t>(progress_bar_size * ratio);
@@ -102,10 +109,12 @@ void progress_display::draw()
     for(size_t i = 0; i < leftpad; ++i)
       oss << ' ';
     oss << bar._description << " [";
-    char percents_buffer[16]{};
-    snprintf(percents_buffer, sizeof(percents_buffer), " %3.1f%%", ratio * 100.f);
+    char status_buffer[256]{};
+    if(_use_percents)
+        snprintf(status_buffer, sizeof(status_buffer), " %3.1f%%", ratio * 100.f);
+    else
+        snprintf(status_buffer, sizeof(status_buffer), " %zu/%zu", size_t(bar._current_value), size_t(bar._max_value));
     const size_t nto_fill = progress_bar_size;
-
     std::string to_print;
     if(perform_bars_redraw)
     {
@@ -125,11 +134,11 @@ void progress_display::draw()
       to_print.clear();
     }
     
-    oss << ']' << percents_buffer;
+    oss << ']' << status_buffer;
     to_print += oss.str();
     const size_t printed_symbols = to_print.length() + (perform_bars_redraw? 0 : nto_fill);
     _max_symbols_printed_on_draw = std::max(_max_symbols_printed_on_draw, printed_symbols);
     std::cout << to_print;
-    clear_to_right(printed_symbols, _max_symbols_printed_on_draw - printed_symbols);
+    clear_to_right(_max_symbols_printed_on_draw - printed_symbols);
   }
 }

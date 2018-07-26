@@ -40,7 +40,8 @@ public:
   progress_display(progress_display &&)                  = default;
 
   size_t add_progress_bar(std::string description, const size_t max_progress_value);
-  void   update_progress_bar(const size_t progress_bar_id, const size_t new_progress_value);
+  void   tick_progress_bar_total(const size_t progress_bar_id);
+  void   tick_progress_bar_current(const size_t progress_bar_id);
   void   remove_progress_bar(const size_t progress_bar_id);
   void   draw();
 
@@ -48,7 +49,7 @@ private:
   void   set_cursor_to_progress_bar_offset(const size_t vertical_offset, const size_t horizontal_offset = 0);
   void   reset_cursor();
   size_t get_max_description_length() const;
-  void   clear_to_right(const size_t x_pos, const size_t count);
+  void   clear_to_right(const size_t count);
 
   size_t                                           _next_token_id = 1;
   std::unordered_map<size_t, detail::progress_bar> _progress_bars;
@@ -62,4 +63,5 @@ private:
   const bool  _remove_completed  = true;
   const char  _filled_char       = 'x';
   const char  _empty_char        = '_';
+  const bool  _use_percents      = false;
 };
