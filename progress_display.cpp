@@ -5,6 +5,7 @@
 #include <cstring>
 #include <unordered_map>
 #include <algorithm>
+#include <sstream>
 
 #include "progress_display.h"
 
@@ -26,7 +27,8 @@ void progress_display::clear_to_right(const size_t x_pos, const size_t count)
   std::cout << clear_line;
 }
 
-void progress_display::remove_progress_bar(const size_t progress_bar_id) // todo: do not redraw right away => not threadsafe
+void progress_display::remove_progress_bar(
+  const size_t progress_bar_id) // todo: do not redraw right away => not threadsafe
 {
   auto it = _progress_bars.find(progress_bar_id);
   if(it == cend(_progress_bars))
@@ -63,9 +65,10 @@ progress_display::progress_display()
   _initial_cursor_pos = {static_cast<size_t>(csbi.dwCursorPosition.X), static_cast<size_t>(csbi.dwCursorPosition.Y)};
 }
 
-void progress_display::set_cursor_to_progress_bar_offset(const size_t offset)
+void progress_display::set_cursor_to_progress_bar_offset(const size_t vertical_offset, const size_t horizontal_offset)
 {
-  set_cursor_to({static_cast<SHORT>(_initial_cursor_pos.x), static_cast<SHORT>(_initial_cursor_pos.y + offset)});
+  set_cursor_to({static_cast<SHORT>(_initial_cursor_pos.x + horizontal_offset),
+                 static_cast<SHORT>(_initial_cursor_pos.y + vertical_offset)});
 }
 void progress_display::reset_cursor()
 {
@@ -84,30 +87,49 @@ void progress_display::draw()
   const size_t mdr = get_max_description_length();
   for(auto & kv : _progress_bars)
   {
-    size_t         symbols_printed = 0;
-    progress_bar & bar             = kv.second;
-    const float    ratio           = static_cast<float>(bar._current_value) / bar._max_value;
+    progress_bar & bar   = kv.second;
+    const float    ratio = static_cast<float>(bar._current_value) / bar._max_value;
     const size_t   progress_bar_size =
       static_cast<size_t>(static_cast<float>(_term_dimensions.x - mdr) * _progress_bar_size);
+    const size_t ncompleted_bars     = static_cast<size_t>(progress_bar_size * ratio);
+    const bool   perform_bars_redraw = bar._prev_symbols_drawn == ncompleted_bars;
+    bar._prev_symbols_drawn          = ncompleted_bars;
+
     set_cursor_to_progress_bar_offset(bar._vertical_offset);
-    const size_t leftpad = mdr - bar._description.length();
+
+    std::ostringstream oss;
+    const size_t       leftpad = mdr - bar._description.length();
     for(size_t i = 0; i < leftpad; ++i)
-      std::cout << ' ';
-    symbols_printed += leftpad;
-    symbols_printed += printf_s("%s [", bar._description.c_str());
+      oss << ' ';
+    oss << bar._description << " [";
     char percents_buffer[16]{};
-    symbols_printed += snprintf(percents_buffer, sizeof(percents_buffer), " %3.1f%%", ratio * 100.f);
-    const size_t nfilled_symbols = static_cast<size_t>(progress_bar_size * ratio);
-    const size_t nto_fill        = progress_bar_size;
-    symbols_printed += nto_fill;
-    for(size_t i = 0; i < nto_fill; ++i)
+    snprintf(percents_buffer, sizeof(percents_buffer), " %3.1f%%", ratio * 100.f);
+    const size_t nto_fill = progress_bar_size;
+
+    std::string to_print;
+    if(perform_bars_redraw)
     {
-      const bool fill_value = i < nfilled_symbols;
-      std::cout << (fill_value ? _filled_char : _empty_char);
+      for(size_t i = 0; i < nto_fill; ++i)
+      {
+        const bool fill_value = i < ncompleted_bars; // todo: only redraw new completed bars
+        oss << (fill_value ? _filled_char : _empty_char);
+      }
     }
-    std::cout << ']' << percents_buffer;
-    symbols_printed++;
-    _max_symbols_printed_on_draw = std::max(_max_symbols_printed_on_draw, symbols_printed);
-    clear_to_right(symbols_printed, _max_symbols_printed_on_draw - symbols_printed);
+    else
+    {
+      to_print = oss.str();
+      std::cout << to_print;
+      set_cursor_to_progress_bar_offset(bar._vertical_offset, nto_fill + static_cast<size_t>(oss.tellp()));
+      oss.clear();
+      oss.str("");
+      to_print.clear();
+    }
+    
+    oss << ']' << percents_buffer;
+    to_print += oss.str();
+    const size_t printed_symbols = to_print.length() + (perform_bars_redraw? 0 : nto_fill);
+    _max_symbols_printed_on_draw = std::max(_max_symbols_printed_on_draw, printed_symbols);
+    std::cout << to_print;
+    clear_to_right(printed_symbols, _max_symbols_printed_on_draw - printed_symbols);
   }
 }

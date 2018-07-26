@@ -12,12 +12,15 @@ struct progress_bar
   size_t             _max_value;
   size_t             _vertical_offset;
 
+  size_t _prev_symbols_drawn;
+
   inline progress_bar & operator=(const progress_bar & rhs)
   {
     std::atomic_init(&_current_value, rhs._current_value);
-    _description     = rhs._description;
-    _max_value       = rhs._max_value;
-    _vertical_offset = rhs._vertical_offset;
+    _description        = rhs._description;
+    _max_value          = rhs._max_value;
+    _vertical_offset    = rhs._vertical_offset;
+    _prev_symbols_drawn = rhs._prev_symbols_drawn;
     return *this;
   }
 };
@@ -42,7 +45,7 @@ public:
   void   draw();
 
 private:
-  void   set_cursor_to_progress_bar_offset(const size_t offset);
+  void   set_cursor_to_progress_bar_offset(const size_t vertical_offset, const size_t horizontal_offset = 0);
   void   reset_cursor();
   size_t get_max_description_length() const;
   void   clear_to_right(const size_t x_pos, const size_t count);
