@@ -1,3 +1,4 @@
+# project style by yuyoyuppe
 ---
 Language:        Cpp
 # BasedOnStyle:  LLVM
@@ -21,7 +22,7 @@ BinPackArguments: false
 BinPackParameters: false
 BreakBeforeBinaryOperators: None
 BreakBeforeBraces: Custom
-BraceWrapping:   
+BraceWrapping:
   AfterClass:      true
   AfterControlStatement: true
   AfterEnum:       false
@@ -37,6 +38,7 @@ BreakBeforeTernaryOperators: false
 BreakConstructorInitializersBeforeComma: true
 ColumnLimit:     120
 CommentPragmas:  '.*'
+CompactNamespaces: true
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 ConstructorInitializerIndentWidth: 2
 ContinuationIndentWidth: 2
@@ -44,8 +46,9 @@ Cpp11BracedListStyle: true
 DerivePointerAlignment: false
 DisableFormat:   false
 ExperimentalAutoDetectBinPacking: true
+FixNamespaceComments: false
 ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH ]
-IncludeCategories: 
+IncludeCategories:
   - Regex:           '^"(llvm|llvm-c|clang|clang-c)/'
     Priority:        2
   - Regex:           '^(<|"(gtest|isl|json)/)'
@@ -61,12 +64,14 @@ MacroBlockEnd:   ''
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
 PenaltyBreakBeforeFirstCallParameter: 19
-PenaltyBreakComment: 99999999
+PenaltyBreakComment: 100
 PenaltyBreakFirstLessLess: 120
-PenaltyBreakString: 10000
+PenaltyBreakString: 100
 PenaltyExcessCharacter: 100
 PenaltyReturnTypeOnItsOwnLine: 100000
+ReflowComments: true
 SortIncludes:    false
+SortUsingDeclarations: true
 PointerAlignment: Middle
 SpaceAfterCStyleCast: false
 SpaceBeforeAssignmentOperators: true
