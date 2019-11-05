@@ -6,6 +6,14 @@
 #include <stack>
 #include <vector>
 
+
+/* TODO: 
+  - use lock_guard instead of unique_lock
+  - use packaged_task instead of function so co_await'ing is supported
+  - queue instead of stacks
+  - ~thread_pool() doesn't lock _task_mutex to set bool fields
+  - _cv_wait_time isn't necessary and should be removed
+*/
 class thread_pool final
 {
 public:
