@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2020-07-11 14:37:36" build="200615">
+		<key name=".Vanilla" modified="2022-06-24 18:58:48" build="220418">
 			<value name="StartType" type="hex" data="02"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
@@ -47,7 +47,7 @@
 			<value name="PopTextColorIdx" type="hex" data="10"/>
 			<value name="PopBackColorIdx" type="hex" data="10"/>
 			<value name="SingleInstance" type="hex" data="01"/>
-			<value name="QuakeStyle" type="hex" data="00"/>
+			<value name="QuakeStyle" type="hex" data="01"/>
 			<value name="KeyboardHooks" type="hex" data="01"/>
 			<value name="UseInjects" type="hex" data="01"/>
 			<value name="Update.CheckOnStartup" type="hex" data="01"/>
@@ -59,7 +59,7 @@
 			<value name="FontSize" type="ulong" data="14"/>
 			<value name="StatusFontHeight" type="long" data="11"/>
 			<value name="TabFontHeight" type="long" data="13"/>
-			<key name="HotKeys" modified="2020-02-15 08:29:57" build="191012">
+			<key name="HotKeys" modified="2021-11-08 10:30:13" build="210912">
 				<value name="MinimizeRestore" type="dword" data="000011c0"/>
 				<value name="KeyMacroVersion" type="hex" data="02"/>
 				<value name="Multi.Modifier" type="dword" data="00000011"/>
@@ -162,8 +162,8 @@
 				<value name="Key.BufTop" type="dword" data="00005d24"/>
 				<value name="Key.BufBottom" type="dword" data="00005d23"/>
 				<value name="Key.BufCursor" type="dword" data="00005d08"/>
-				<value name="FontLargerKey" type="dword" data="000011d0"/>
-				<value name="FontSmallerKey" type="dword" data="000011d1"/>
+				<value name="FontLargerKey" type="dword" data="00000000"/>
+				<value name="FontSmallerKey" type="dword" data="00000000"/>
 				<value name="FontOriginalKey" type="dword" data="00001104"/>
 				<value name="PasteFileKey" type="dword" data="00101146"/>
 				<value name="PastePathKey" type="dword" data="00101144"/>
@@ -255,6 +255,9 @@
 				<value name="CloseToRightKey" type="dword" data="00000000"/>
 				<value name="Key.BufPrUp" type="dword" data="00121121"/>
 				<value name="Key.BufPrDn" type="dword" data="00121122"/>
+				<value name="Key.EditMenu" type="dword" data="00000000"/>
+				<value name="Key.EditMenu2" type="dword" data="00000000"/>
+				<value name="SetFocusParent" type="dword" data="0000a01b"/>
 			</key>
 			<value name="StartCreateDelay" type="ulong" data="100"/>
 			<value name="ExtendFonts" type="hex" data="00"/>
@@ -279,7 +282,7 @@
 			<value name="ConVisible" type="hex" data="00"/>
 			<value name="SetDefaultTerminal" type="hex" data="01"/>
 			<value name="SetDefaultTerminalStartup" type="hex" data="01"/>
-			<value name="SetDefaultTerminalStartupTSA" type="hex" data="00"/>
+			<value name="SetDefaultTerminalStartupTSA" type="hex" data="01"/>
 			<value name="DefaultTerminalAgressive" type="hex" data="01"/>
 			<value name="DefaultTerminalNoInjects" type="hex" data="00"/>
 			<value name="DefaultTerminalNewWindow" type="hex" data="00"/>
@@ -294,7 +297,7 @@
 			<value name="ProcessCtrlZ" type="hex" data="00"/>
 			<value name="SuppressBells" type="hex" data="01"/>
 			<value name="ConsoleExceptionHandler" type="hex" data="00"/>
-			<value name="UseClink" type="hex" data="01"/>
+			<value name="UseClink" type="hex" data="00"/>
 			<value name="StoreTaskbarkTasks" type="hex" data="00"/>
 			<value name="StoreTaskbarCommands" type="hex" data="00"/>
 			<value name="SaveCmdHistory" type="hex" data="01"/>
@@ -318,7 +321,7 @@
 			<value name="Multi.Iterate" type="hex" data="01"/>
 			<value name="Multi.SplitWidth" type="hex" data="04"/>
 			<value name="Multi.SplitHeight" type="hex" data="04"/>
-			<value name="FontName" type="string" data="Fira Code Medium"/>
+			<value name="FontName" type="string" data="Fira Code SemiBold"/>
 			<value name="FontName2" type="string" data="Consolas"/>
 			<value name="FontAutoSize" type="hex" data="00"/>
 			<value name="FontSizeX" type="ulong" data="0"/>
@@ -346,11 +349,11 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="WindowMode" type="dword" data="00000520"/>
 			<value name="IntegralSize" type="hex" data="00"/>
-			<value name="ConWnd X" type="long" data="740"/>
-			<value name="ConWnd Y" type="long" data="29"/>
-			<value name="LastMonitor" type="string" data="0,0,1920,1050"/>
+			<value name="ConWnd X" type="long" data="-1"/>
+			<value name="ConWnd Y" type="long" data="77"/>
+			<value name="LastMonitor" type="string" data="0,0,1920,1042"/>
 			<value name="ConWnd Width" type="dword" data="00000093"/>
-			<value name="ConWnd Height" type="dword" data="00000029"/>
+			<value name="ConWnd Height" type="dword" data="00000023"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
 			<value name="QuakeAnimation" type="ulong" data="0"/>
@@ -420,7 +423,7 @@
 			<value name="SendAltPrintScrn" type="hex" data="00"/>
 			<value name="SendPrintScrn" type="hex" data="00"/>
 			<value name="SendCtrlEsc" type="hex" data="00"/>
-			<value name="Min2Tray" type="hex" data="00"/>
+			<value name="Min2Tray" type="hex" data="01"/>
 			<value name="AlwaysShowTrayIcon" type="hex" data="00"/>
 			<value name="SafeFarClose" type="hex" data="01"/>
 			<value name="SafeFarCloseMacro" type="string" data=""/>
@@ -501,7 +504,7 @@
 			<value name="TabDblClick" type="ulong" data="1"/>
 			<value name="TabBtnDblClick" type="ulong" data="0"/>
 			<value name="TabsOnTaskBar" type="hex" data="03"/>
-			<value name="TaskBarOverlay" type="hex" data="01"/>
+			<value name="TaskBarOverlay" type="hex" data="00"/>
 			<value name="TaskbarProgress" type="hex" data="01"/>
 			<value name="TabCloseMacro" type="string" data=""/>
 			<value name="TabFontFace" type="string" data="Segoe UI"/>
@@ -583,8 +586,8 @@
 			<value name="Update.DownloadPath" type="string" data="%TEMP%\ConEmu"/>
 			<value name="Update.LeavePackages" type="hex" data="00"/>
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
-			<key name="Tasks" modified="2020-07-11 14:38:09" build="200615">
-				<value name="Count" type="long" data="7"/>
+			<key name="Tasks" modified="2021-11-08 10:30:13" build="210912">
+				<value name="Count" type="long" data="8"/>
 				<key name="Task1" modified="2020-07-11 13:52:17" build="200615">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000003"/>
@@ -640,14 +643,23 @@
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
 				</key>
-				<key name="Task7" modified="2020-07-11 14:38:09" build="200615">
+				<key name="Task7" modified="2022-03-21 07:18:45" build="220308">
 					<value name="Name" type="string" data="{Shells::VSx64}"/>
 					<value name="Flags" type="dword" data="00000000"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
-					<value name="Cmd1" type="string" data='%comspec% /k ""S:\VS2019\VC\Auxiliary\Build\vcvars64.bat""'/>
+					<value name="Cmd1" type="string" data='%comspec% /k "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat"'/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
+				</key>
+				<key name="Task8" modified="2021-11-08 10:30:13" build="210912">
+					<value name="Name" type="string" data="{WSL}"/>
+					<value name="Flags" type="dword" data="00000004"/>
+					<value name="Hotkey" type="dword" data="00000000"/>
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Active" type="long" data="0"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data="wsl.exe -cur_console:pm:/mnt"/>
 				</key>
 			</key>
 			<key name="Apps" modified="2016-07-28 00:56:18" build="160724">
@@ -806,9 +818,14 @@
 			<value name="StatusBar.Hide.CellI" type="hex" data="01"/>
 			<value name="StatusBar.Hide.InputGrouping" type="hex" data="00"/>
 			<value name="CmdLineHistory" type="multi">
+				<line data="{Shells::VSx64}"/>
+				<line data="{Shells::cmd (Admin)}"/>
+				<line data="{WSL}"/>
+				<line data="{Shells::PowerShell (Admin)}"/>
 				<line data="{Tests::Show ANSI colors}"/>
 				<line data="{Shells::PT PS admin}"/>
 			</value>
+			<value name="ResetTerminalConfirm" type="hex" data="01"/>
 		</key>
 	</key>
 </key>
