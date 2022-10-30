@@ -605,14 +605,14 @@
 			<value name="Update.PostUpdateCmd" type="string" data="echo Last successful update&gt;ConEmuUpdate.info &amp;&amp; date /t&gt;&gt;ConEmuUpdate.info &amp;&amp; time /t&gt;&gt;ConEmuUpdate.info"/>
 			<key name="Tasks" modified="2022-10-30 19:30:14" build="220807">
 				<value name="Count" type="long" data="6"/>
-				<key name="Task1" modified="2022-10-30 18:12:33" build="220807">
+				<key name="Task1" modified="2022-10-30 20:27:44" build="220807">
 					<value name="Name" type="string" data="{Shells::cmd}"/>
 					<value name="Flags" type="dword" data="00000002"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='cmd.exe /k "%ConEmuBaseDir%\CmdInit.cmd"'/>
+					<value name="Cmd1" type="string" data='cmd.exe /k "%ConEmuBaseDir%\CmdInit.cmd" -new_console:d:C:\projects '/>
 				</key>
 				<key name="Task2" modified="2022-10-30 18:12:33" build="220807">
 					<value name="Name" type="string" data="{Shells::cmd (Admin)}"/>
@@ -650,14 +650,14 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data="%windir%\system32\wsl.exe -cur_console:pm:/mnt"/>
 				</key>
-				<key name="Task6" modified="2022-10-30 19:43:40" build="220807">
+				<key name="Task6" modified="2022-10-30 20:27:25" build="220807">
 					<value name="Name" type="string" data="{VSx64}"/>
 					<value name="Flags" type="dword" data="00000004"/>
 					<value name="Hotkey" type="dword" data="00000000"/>
 					<value name="GuiArgs" type="string" data=""/>
 					<value name="Active" type="long" data="0"/>
 					<value name="Count" type="long" data="1"/>
-					<value name="Cmd1" type="string" data='%comspec% /k "C:\Program Files (x86)\VS2022\VC\Auxiliary\Build\vcvars64.bat"'/>
+					<value name="Cmd1" type="string" data='%comspec% /k "C:\Program Files (x86)\VS2022\VC\Auxiliary\Build\vcvars64.bat" -new_console:d:C:\projects '/>
 				</key>
 			</key>
 			<key name="Apps" modified="2022-10-30 18:12:33" build="220807">
