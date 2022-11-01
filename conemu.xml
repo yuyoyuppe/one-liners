@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <key name="Software">
 	<key name="ConEmu">
-		<key name=".Vanilla" modified="2022-10-30 20:22:37" build="220807">
-			<value name="StartType" type="hex" data="02"/>
+		<key name=".Vanilla" modified="2022-11-01 14:26:29" build="220807">
+			<value name="StartType" type="hex" data="03"/>
 			<value name="CmdLine" type="string" data=""/>
 			<value name="StartTasksFile" type="string" data=""/>
-			<value name="StartTasksName" type="string" data="{Shells::cmd}"/>
+			<value name="StartTasksName" type="string" data="{VSx64}"/>
 			<value name="StartFarFolders" type="hex" data="00"/>
 			<value name="StartFarEditors" type="hex" data="00"/>
-			<value name="ColorTable00" type="dword" data="00211f1d"/>
-			<value name="ColorTable01" type="dword" data="005f5140"/>
-			<value name="ColorTable02" type="dword" data="00345e5a"/>
-			<value name="ColorTable03" type="dword" data="005b5d45"/>
-			<value name="ColorTable04" type="dword" data="00333366"/>
-			<value name="ColorTable05" type="dword" data="005d4a59"/>
-			<value name="ColorTable06" type="dword" data="003a6378"/>
-			<value name="ColorTable07" type="dword" data="00c6c8c5"/>
-			<value name="ColorTable08" type="dword" data="00969896"/>
-			<value name="ColorTable09" type="dword" data="00bea281"/>
-			<value name="ColorTable10" type="dword" data="0068bdb5"/>
-			<value name="ColorTable11" type="dword" data="00b7ba8a"/>
-			<value name="ColorTable12" type="dword" data="006666cc"/>
-			<value name="ColorTable13" type="dword" data="00bb94b2"/>
-			<value name="ColorTable14" type="dword" data="0074c6f0"/>
-			<value name="ColorTable15" type="dword" data="00ffffff"/>
+			<value name="ColorTable00" type="dword" data="00ffffff"/>
+			<value name="ColorTable01" type="dword" data="00573821"/>
+			<value name="ColorTable02" type="dword" data="00004638"/>
+			<value name="ColorTable03" type="dword" data="004f4c1f"/>
+			<value name="ColorTable04" type="dword" data="00141464"/>
+			<value name="ColorTable05" type="dword" data="00542c44"/>
+			<value name="ColorTable06" type="dword" data="00005b75"/>
+			<value name="ColorTable07" type="dword" data="004c4d4d"/>
+			<value name="ColorTable08" type="dword" data="008c908e"/>
+			<value name="ColorTable09" type="dword" data="00ae7142"/>
+			<value name="ColorTable10" type="dword" data="00008c71"/>
+			<value name="ColorTable11" type="dword" data="009f993e"/>
+			<value name="ColorTable12" type="dword" data="002928c8"/>
+			<value name="ColorTable13" type="dword" data="00a85989"/>
+			<value name="ColorTable14" type="dword" data="0000b7ea"/>
+			<value name="ColorTable15" type="dword" data="00000000"/>
 			<value name="TextColorIdx" type="hex" data="10"/>
 			<value name="BackColorIdx" type="hex" data="10"/>
 			<value name="PopTextColorIdx" type="hex" data="10"/>
@@ -261,7 +261,8 @@
 			<value name="ClipboardDeleteLeftWord" type="hex" data="02"/>
 			<value name="TrueColorerSupport" type="hex" data="01"/>
 			<value name="VividColors" type="hex" data="01"/>
-			<value name="FadeInactive" type="hex" data="01"/>
+			<!-- NB(yuyoyuppe): removes palette blinking on alt-tab - important -->
+			<value name="FadeInactive" type="hex" data="00"/> 
 			<value name="FadeInactiveLow" type="hex" data="00"/>
 			<value name="FadeInactiveHigh" type="hex" data="D0"/>
 			<value name="ConVisible" type="hex" data="00"/>
@@ -343,14 +344,14 @@
 			<value name="Cascaded" type="hex" data="01"/>
 			<value name="IntegralSize" type="hex" data="00"/>
 			<value name="WindowMode" type="dword" data="00000520"/>
-			<value name="ConWnd X" type="long" data="44"/>
+			<value name="ConWnd X" type="long" data="7"/>
 			<value name="ConWnd Y" type="long" data="0"/>
-			<value name="LastMonitor" type="string" data="0,0,2560,1400"/>
+			<value name="LastMonitor" type="string" data="0,0,2560,1380"/>
 			<value name="ConWnd Width" type="dword" data="00000050"/>
 			<value name="ConWnd Height" type="dword" data="00000019"/>
 			<value name="16bit Height" type="ulong" data="0"/>
 			<value name="Restore2ActiveMon" type="hex" data="00"/>
-			<value name="RestoreInactive" type="hex" data="00"/>
+			<value name="RestoreInactive" type="hex" data="01"/>
 			<value name="QuakeAnimation" type="ulong" data="300"/>
 			<value name="HideCaption" type="hex" data="00"/>
 			<value name="HideChildCaption" type="hex" data="01"/>
@@ -558,7 +559,7 @@
 			<value name="MinimizeOnLoseFocus" type="hex" data="00"/>
 			<value name="DisableFarFlashing" type="hex" data="00"/>
 			<value name="DisableAllFlashing" type="hex" data="00"/>
-			<value name="FindText" type="string" data=""/>
+			<value name="FindText" type="string" data='"rss"'/>
 			<value name="FindMatchCase" type="hex" data="00"/>
 			<value name="FindMatchWholeWords" type="hex" data="00"/>
 			<value name="FindTransparent" type="hex" data="01"/>
@@ -659,6 +660,12 @@
 					<value name="Count" type="long" data="1"/>
 					<value name="Cmd1" type="string" data='%comspec% /k "C:\Program Files (x86)\VS2022\VC\Auxiliary\Build\vcvars64.bat" -new_console:d:C:\projects '/>
 				</key>
+				<key name="&lt;Startup&gt;" modified="2022-11-01 14:28:26" build="220807">
+					<value name="GuiArgs" type="string" data=""/>
+					<value name="Active" type="long" data="1"/>
+					<value name="Count" type="long" data="1"/>
+					<value name="Cmd1" type="string" data='&gt; -cur_console:f -cur_console:d:C:\projects cmd.exe /k "%ConEmuBaseDir%\CmdInit.cmd"'/>
+				</key>
 			</key>
 			<key name="Apps" modified="2022-10-30 18:12:33" build="220807">
 				<value name="Count" type="long" data="0"/>
@@ -667,6 +674,7 @@
 				<value name="Count" type="long" data="0"/>
 			</key>
 			<value name="CmdLineHistory" type="multi">
+				<line data="{Shells::PowerShell}"/>
 				<line data="{VSx64}"/>
 			</value>
 		</key>
